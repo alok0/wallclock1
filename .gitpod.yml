@@ -1,0 +1,26 @@
+tasks:
+  - before: |
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+      echo 'ZSH_THEME="gentoo"' >> ~/.zshrc
+      echo 'CASE_SENSITIVE="true"' >> ~/.zshrc
+      echo 'source $ZSH/oh-my-zsh.sh' >> ~/.zshrc
+      echo 'setopt share_history' >> ~/.zshrc
+      echo 'setopt no_aliases' >> ~/.zshrc
+      echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
+    init: |
+      YARN_ENABLE_GLOBAL_CACHE=true yarn install
+    command: |
+      YARN_ENABLE_GLOBAL_CACHE=true yarn install
+      yarn start
+ports:
+  - port: 5173
+    onOpen: notify
+    visibility: private
+
+vscode:
+  extensions:
+    - eamodio.gitlens
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
+    - streetsidesoftware.code-spell-checker
+    - arcanis.vscode-zipfs

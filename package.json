@@ -1,0 +1,52 @@
+{
+  "name": "wallclock1",
+  "version": "0.0.1",
+  "license": "All Rights Reserved",
+  "private": true,
+  "scripts": {
+    "postinstall": "husky",
+    "build": "vite build",
+    "start": "vite serve",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@emotion/react": "11.13.5",
+    "@emotion/styled": "11.13.5",
+    "@mui/icons-material": "6.1.10",
+    "@mui/material": "6.1.10",
+    "dayjs": "1.11.13",
+    "preact": "10.25.1",
+    "react": "18.3.1",
+    "react-router-dom": "7.0.2",
+    "usehooks-ts": "3.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.16.0",
+    "@mui/styled-engine": "6.1.10",
+    "@prefresh/vite": "2.4.6",
+    "@types/node": "22.10.1",
+    "@types/react": "18.3.14",
+    "eslint": "9.16.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-promise": "7.2.1",
+    "eslint-plugin-react": "7.37.2",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "husky": "9.1.7",
+    "lint-staged": "15.2.10",
+    "prettier": "3.4.2",
+    "typescript": "5.7.2",
+    "typescript-eslint": "8.17.0",
+    "vite": "6.0.3"
+  },
+  "resolutions": {
+    "esbuild": "0.24.0",
+    "@types/react": "18.3.14",
+    "@types/react-dom": "18.3.2"
+  },
+  "lint-staged": {
+    "*.(js|jsx|ts|tsx|json|html|css|md)": "prettier --write",
+    "*.(ts|tsx)": "eslint --max-warnings=0"
+  },
+  "packageManager": "yarn@4.5.3"
+}

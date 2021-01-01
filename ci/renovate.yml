@@ -1,0 +1,7 @@
+include:
+  - project: "renovate-bot/renovate-runner"
+    file: "/templates/renovate.gitlab-ci.yml"
+
+renovate:
+  rules:
+    - if: $CI_PIPELINE_SOURCE
