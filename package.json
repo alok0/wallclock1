@@ -16,7 +16,7 @@
     "@mui/material": "6.2.0",
     "dayjs": "1.11.13",
     "preact": "10.25.2",
-    "react": "18.3.1",
+    "react": "19.0.0",
     "react-router-dom": "7.0.2",
     "usehooks-ts": "3.1.0"
   },
@@ -25,7 +25,7 @@
     "@mui/styled-engine": "6.2.0",
     "@prefresh/vite": "2.4.6",
     "@types/node": "22.10.2",
-    "@types/react": "18.3.16",
+    "@types/react": "19.0.1",
     "eslint": "9.17.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
@@ -41,8 +41,8 @@
   },
   "resolutions": {
     "esbuild": "0.24.0",
-    "@types/react": "18.3.16",
-    "@types/react-dom": "18.3.5"
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.2"
   },
   "lint-staged": {
     "*.(js|jsx|ts|tsx|json|html|css|md)": "prettier --write",
