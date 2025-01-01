@@ -3425,6 +3425,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lean-qr@npm:2.3.5":
+  version: 2.3.5
+  resolution: "lean-qr@npm:2.3.5"
+  bin:
+    lean-qr: build/cli.mjs
+  checksum: 10c0/32f133927795a77f9f29cbb86786d6b34d57966bd540cec208d7bfabae933f57bfd13b23c6743556419b7336202ee77a5079b3a4a00df92060716ec649ef52e1
+  languageName: node
+  linkType: hard
+
 "levn@npm:^0.4.1":
   version: 0.4.1
   resolution: "levn@npm:0.4.1"
@@ -5077,6 +5086,7 @@ __metadata:
     eslint-plugin-react: "npm:7.37.3"
     eslint-plugin-react-hooks: "npm:5.1.0"
     husky: "npm:9.1.7"
+    lean-qr: "npm:2.3.5"
     lint-staged: "npm:15.2.11"
     preact: "npm:10.25.3"
     prettier: "npm:3.4.2"

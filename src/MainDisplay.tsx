@@ -1,5 +1,5 @@
 import { Box, Typography, styled } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ConfigComponents } from "./ConfigPanel/ConfigComponent";
 import { TZDisplay } from "./TZDisplay";
@@ -60,6 +60,20 @@ export const TopDisplay: React.FC = () => {
 };
 
 const MainDisplay: React.FC = () => {
+  const navTo = useNavigate();
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "q" && !e.altKey && !e.ctrlKey && !e.metaKey) {
+        void navTo("/qr");
+      }
+    };
+
+    document.body.addEventListener("keypress", handler);
+    return () => {
+      document.body.removeEventListener("keypress", handler);
+    };
+  }, [navTo]);
+
   return (
     <MainContainer>
       <Box

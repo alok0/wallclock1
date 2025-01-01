@@ -6,6 +6,7 @@ import { TimeProvider } from "./TimeData";
 const BigDisplay = React.lazy(() => import("./Big"));
 const Big2 = React.lazy(() => import("./Big2"));
 const MainDisplay = React.lazy(() => import("./MainDisplay"));
+const QRDisplay = React.lazy(() => import("./QRDisplay"));
 
 const Main = () => {
   return (
@@ -14,6 +15,7 @@ const Main = () => {
         <Route path="/" element={<MainDisplay />} />
         <Route path="/big" element={<BigDisplay />} />
         <Route path="/big2" element={<Big2 />} />
+        <Route path="/qr" element={<QRDisplay />} />
         <Route path="/*" element={<Navigate replace to="/" />} />
       </Routes>
     </TimeProvider>
