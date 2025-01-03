@@ -2,6 +2,7 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import React from "react";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { TimeProvider } from "./TimeData";
+import { VersionChecker } from "./Version";
 
 const BigDisplay = React.lazy(() => import("./Big"));
 const Big2 = React.lazy(() => import("./Big2"));
@@ -42,6 +43,7 @@ export const App: React.FC = () => {
       <HashRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          <VersionChecker />
           <React.Suspense fallback={<></>}>
             <Main />
           </React.Suspense>
