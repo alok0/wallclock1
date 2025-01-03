@@ -14,7 +14,7 @@ export const VersionChecker = () => {
   useEffect(() => {
     const handle = setInterval(() => {
       void (async () => {
-        const resp = await fetch("/version.txt");
+        const resp = await fetch("version.txt");
         if (!resp.ok) {
           console.info("failed to get version", resp.status, resp.statusText);
           return;
