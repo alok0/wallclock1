@@ -12,37 +12,37 @@
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
-    "@mui/icons-material": "6.4.0",
-    "@mui/material": "6.4.0",
+    "@mui/icons-material": "6.4.1",
+    "@mui/material": "6.4.1",
     "dayjs": "1.11.13",
     "lean-qr": "2.3.5",
     "preact": "10.25.4",
     "react": "19.0.0",
-    "react-router-dom": "7.1.2",
+    "react-router-dom": "7.1.3",
     "usehooks-ts": "3.1.0"
   },
   "devDependencies": {
-    "@eslint/js": "9.18.0",
+    "@eslint/js": "9.19.0",
     "@mui/styled-engine": "6.4.0",
     "@prefresh/vite": "2.4.6",
-    "@types/node": "22.10.7",
-    "@types/react": "19.0.7",
-    "eslint": "9.18.0",
+    "@types/node": "22.10.10",
+    "@types/react": "19.0.8",
+    "eslint": "9.19.0",
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-promise": "7.2.1",
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-hooks": "5.1.0",
     "husky": "9.1.7",
-    "lint-staged": "15.4.1",
+    "lint-staged": "15.4.2",
     "prettier": "3.4.2",
     "typescript": "5.7.3",
-    "typescript-eslint": "8.20.0",
-    "vite": "6.0.7"
+    "typescript-eslint": "8.21.0",
+    "vite": "6.0.11"
   },
   "resolutions": {
     "esbuild": "0.24.2",
-    "@types/react": "19.0.7",
+    "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3"
   },
   "lint-staged": {
