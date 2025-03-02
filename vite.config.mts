@@ -6,12 +6,13 @@ import { defineConfig } from "vite";
 
 const dirname = new URL(".", import.meta.url).pathname;
 
-export default (() => {
-  const version = String(execSync("git describe --tags --always --dirty", {
-    cwd: dirname,
-    encoding: "utf-8",
-  }))
-    .trim();
+export default () => {
+  const version = String(
+    execSync("git describe --tags --always --dirty", {
+      cwd: dirname,
+      encoding: "utf-8",
+    }),
+  ).trim();
 
   return defineConfig({
     root: "src",
@@ -40,7 +41,7 @@ export default (() => {
       },
     },
     define: {
-      "__VERSION__": JSON.stringify(version),
+      __VERSION__: JSON.stringify(version),
     },
     resolve: {
       alias: [
@@ -50,6 +51,9 @@ export default (() => {
         { find: "react/jsx-runtime", replacement: "preact/jsx-runtime" },
       ],
     },
+    server: {
+      allowedHosts: true,
+    },
     plugins: [
       prefresh(),
       {
@@ -57,13 +61,10 @@ export default (() => {
         apply: "build",
         buildEnd: () =>
           void setTimeout(() => {
-            void writeFile(
-              resolve(dirname, "public", "version.txt"),
-              version,
-            );
+            void writeFile(resolve(dirname, "public", "version.txt"), version);
             console.log({ version });
           }, 1000),
       },
     ],
   });
-});
+};
