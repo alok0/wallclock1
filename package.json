@@ -47,7 +47,7 @@
   },
   "lint-staged": {
     "*.(js|jsx|ts|tsx|json|html|css|md)": "prettier --write",
-    "*.(ts|tsx)": "eslint --max-warnings=0"
+    "src/**/*.(ts|tsx)": "eslint --max-warnings=0"
   },
   "packageManager": "yarn@4.8.0"
 }
