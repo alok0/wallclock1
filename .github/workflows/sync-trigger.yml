@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: eic/trigger-gitlab-ci@v1
+      - uses: eic/trigger-gitlab-ci@v3
         with:
           project_id: 23402816
           ref_name: master
