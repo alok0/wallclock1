@@ -1,25 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import { correction, generate, mode } from "lean-qr";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { AutoSizer } from "./Autosize";
 import { useTime } from "./TimeData";
 
 export const QRDisplay: React.FC = () => {
   const time = useTime();
-  const navTo = useNavigate();
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
-
-  useEffect(() => {
-    const handler = () => {
-      void navTo("/");
-    };
-
-    document.body.addEventListener("keypress", handler);
-    return () => {
-      document.body.removeEventListener("keypress", handler);
-    };
-  }, [navTo]);
 
   useEffect(() => {
     if (!canvas) {
@@ -72,7 +59,6 @@ export const QRDisplay: React.FC = () => {
           justifyContent: "center",
           overflow: "hidden",
         }}
-        onClick={() => void navTo("/")}
       >
         <Box sx={{ height: "100vmin", width: "100vmin" }}>
           <AutoSizer>

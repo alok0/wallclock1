@@ -1,7 +1,5 @@
 import { Box, Typography, styled } from "@mui/material";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { ConfigComponents } from "./ConfigPanel/ConfigComponent";
+import React from "react";
 import { TZDisplay } from "./TZDisplay";
 import { useTime } from "./TimeData";
 
@@ -21,17 +19,14 @@ const MainContainer = styled("div")(({ theme }) => ({
 
 export const TopDisplay: React.FC = () => {
   const time = useTime();
-  const navTo = useNavigate();
   return (
     <Box
-      onClick={() => void navTo("/big2")}
       sx={{
         display: "grid",
         gridTemplateColumns: "1fr",
         gap: 1,
         px: 2,
         borderRadius: 1,
-        cursor: "pointer",
       }}
     >
       <Typography
@@ -60,20 +55,6 @@ export const TopDisplay: React.FC = () => {
 };
 
 const MainDisplay: React.FC = () => {
-  const navTo = useNavigate();
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "q" && !e.altKey && !e.ctrlKey && !e.metaKey) {
-        void navTo("/qr");
-      }
-    };
-
-    document.body.addEventListener("keypress", handler);
-    return () => {
-      document.body.removeEventListener("keypress", handler);
-    };
-  }, [navTo]);
-
   return (
     <MainContainer>
       <Box
@@ -92,7 +73,6 @@ const MainDisplay: React.FC = () => {
         <TopDisplay />
         <TZDisplay />
       </Box>
-      <ConfigComponents />
     </MainContainer>
   );
 };

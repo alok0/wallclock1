@@ -17,6 +17,7 @@ const Container = styled("div")(({ theme }) => ({
   gridGap: "1vmin",
   padding: "1vmax",
   placeItems: "stretch",
+  pointerEvents: "none",
 }));
 
 export const BigDisplay: React.FC = () => {

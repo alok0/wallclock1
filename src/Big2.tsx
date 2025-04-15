@@ -4,7 +4,6 @@ import { AutoSizer } from "./Autosize";
 import { ConfigOverride, useConfig } from "./Config";
 import { useTime } from "./TimeData";
 import { cleanZoneName } from "./cleanZoneName";
-import { useNavigate } from "react-router-dom";
 
 const ZoneDisplayBox: React.FC<{ timeZone: string }> = ({ timeZone }) => {
   const time = useTime();
@@ -45,7 +44,6 @@ const ZoneDisplayBox: React.FC<{ timeZone: string }> = ({ timeZone }) => {
 export const Big2: React.FC = () => {
   const time = useTime();
   const { display } = useConfig();
-  const navTo = useNavigate();
 
   return (
     <>
@@ -64,9 +62,8 @@ export const Big2: React.FC = () => {
           gap: "1vmin",
           padding: 2,
           placeItems: "stretch",
-          cursor: "pointer",
+          cursor: "none",
         }}
-        onClick={() => void navTo("/")}
       >
         <AutoSizer>
           <Typography

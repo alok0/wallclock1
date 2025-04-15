@@ -3,10 +3,10 @@ import React from "react";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { TimeProvider } from "./TimeData";
 import { VersionChecker } from "./Version";
-
-const BigDisplay = React.lazy(() => import("./Big"));
-const Big2 = React.lazy(() => import("./Big2"));
-const MainDisplay = React.lazy(() => import("./MainDisplay"));
+import { ConfigComponents } from "./ConfigPanel/ConfigComponent";
+import MainDisplay from "./MainDisplay";
+import Big2 from "./Big2";
+import BigDisplay from "./Big";
 const QRDisplay = React.lazy(() => import("./QRDisplay"));
 
 const Main = () => {
@@ -46,6 +46,7 @@ export const App: React.FC = () => {
           <VersionChecker />
           <React.Suspense fallback={<></>}>
             <Main />
+            <ConfigComponents />
           </React.Suspense>
         </ThemeProvider>
       </HashRouter>
