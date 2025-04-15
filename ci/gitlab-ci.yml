@@ -5,6 +5,7 @@ before_script:
 
 test-compile:
   stage: deploy
+  needs: []
   script:
     - yarn tsc --noEmit
     - yarn build
@@ -12,6 +13,7 @@ test-compile:
 
 pages:
   stage: deploy
+  needs: []
   script:
     - yarn build
   artifacts:
