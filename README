@@ -1,0 +1,6 @@
+# wallclock
+
+This is a simple browser app for showing the current time and time in various
+timezones.
+
+Currently deployed to: https://aloknull.gitlab.io/wallclock/
