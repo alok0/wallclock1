@@ -27,5 +27,6 @@ sync:
   script:
     - git remote add github https://github.com/alok0/wallclock1.git
     - git remote add gitlab https://gitlab-ci-token:${REPO_TOKEN}@gitlab.com/aloknull/wallclock.git
-    - git pull github
-    - git push gitlab github/master:master
+    - git fetch github
+    - git reset --hard github/master
+    - git push gitlab HEAD:master
