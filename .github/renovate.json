@@ -1,14 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "rebaseWhen": "behind-base-branch",
   "commitMessagePrefix": "[renovatebot] ",
   "postUpdateOptions": ["yarnDedupeHighest"],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "excludePackagePatterns": ["^typescript$"],
-      "groupName": "deps"
+      "groupName": "deps",
+      "matchPackageNames": ["!/^typescript$/"]
     }
   ]
 }
