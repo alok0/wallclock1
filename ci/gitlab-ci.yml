@@ -19,16 +19,3 @@ pages:
       - public
   only:
     - master
-  except:
-    variables:
-      - $ONLY_RENOVATE
-
-renovate:
-  only:
-    - master
-  stage: .pre
-  trigger:
-    forward:
-      yaml_variables: true
-      pipeline_variables: true
-    include: ci/renovate.yml
