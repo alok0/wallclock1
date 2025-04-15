@@ -19,3 +19,11 @@ pages:
       - public
   only:
     - master
+
+sync:
+  stage: .post
+  script:
+    - git remote add github https://github.com/alok0/wallclock1.git
+    - git remote add gitlab https://gitlab-ci-token:${REPO_TOKEN}@gitlab.com/aloknull/wallclock.git
+    - git pull github
+    - git push gitlab
