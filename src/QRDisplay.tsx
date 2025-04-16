@@ -1,4 +1,3 @@
-import { Box, Typography } from "@mui/material";
 import { correction, generate, mode } from "lean-qr";
 import React, { useEffect, useState } from "react";
 import { AutoSizer } from "./Autosize";
@@ -25,33 +24,32 @@ export const QRDisplay: React.FC = () => {
 
   return (
     <>
-      <Box
-        sx={{
+      <div
+        style={{
           position: "absolute",
-          zIndex: "appBar",
+          zIndex: "500",
           inset: 0,
           display: "grid",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
+          cursor: "none",
         }}
       >
-        <Typography
-          variant="h6"
-          component="time"
-          sx={{
+        <time
+          style={{
             color: "#000",
-            opacity: (theme) => theme.palette.action.disabledOpacity,
+            opacity: 0.3,
             pointerEvents: "none",
-            zIndex: "modal",
+            zIndex: "600",
             transform: "translateY(-50vmin) translateY(1.2em)",
           }}
         >
           {time.format("dddd YYYY-MM-DD HH:mm:ss[ ]z")}
-        </Typography>
-      </Box>
-      <Box
-        sx={{
+        </time>
+      </div>
+      <div
+        style={{
           position: "absolute",
           inset: 0,
           display: "grid",
@@ -60,7 +58,7 @@ export const QRDisplay: React.FC = () => {
           overflow: "hidden",
         }}
       >
-        <Box sx={{ height: "100vmin", width: "100vmin" }}>
+        <div style={{ height: "100vmin", width: "100vmin" }}>
           <AutoSizer>
             <canvas
               ref={setCanvas}
@@ -70,8 +68,8 @@ export const QRDisplay: React.FC = () => {
               }}
             />
           </AutoSizer>
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };

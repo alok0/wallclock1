@@ -1,11 +1,11 @@
-import MenuIcon from "@mui/icons-material/Menu";
-import { Dialog, IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { css } from "../css-instance";
 
-const ConfigContent = React.lazy(() => import("./ConfigContent"));
+const ConfigDialog = React.lazy(() => import("./ConfigDialog"));
 
 export const ConfigComponents: React.FC = () => {
   const [active, setActive] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const handler = (ev: KeyboardEvent) => {
@@ -16,6 +16,7 @@ export const ConfigComponents: React.FC = () => {
         ev.metaKey === false &&
         ev.shiftKey === false
       ) {
+        setLoaded(true);
         setActive(true);
       }
     };
@@ -27,40 +28,37 @@ export const ConfigComponents: React.FC = () => {
 
   return (
     <>
-      <IconButton
-        aria-label="Open Menu"
-        onClick={() => {
-          setActive(true);
-        }}
-        sx={(theme) => ({
+      <div
+        className={css({
           position: "fixed",
-          bottom: theme.spacing(1),
-          right: theme.spacing(1),
+          zIndex: 10000,
+          bottom: 8,
+          right: 8,
           opacity: 0,
-          transition: theme.transitions.create(["opacity"]),
+          transition: "all 300ms",
           "&:hover": { opacity: 1 },
+          filter: "grayscale(100%)",
         })}
       >
-        <MenuIcon />
-      </IconButton>
-      <React.Suspense>
-        <Dialog
-          maxWidth={false}
-          open={active}
-          onClose={() => {
-            setActive(false);
+        <button
+          aria-label="Open Menu"
+          onClick={() => {
+            setLoaded(true);
+            setActive(true);
           }}
-          slotProps={{
-            backdrop: { sx: { backdropFilter: "blur(2px)" } },
-            transition: {
-              appear: true,
-              unmountOnExit: true,
-              mountOnEnter: true,
-            },
+          style={{
+            height: 32,
+            width: 32,
+            border: "0",
+            borderRadius: 16,
+            cursor: "pointer",
           }}
         >
-          <ConfigContent handleClose={() => setActive(false)} />
-        </Dialog>
+          📝
+        </button>
+      </div>
+      <React.Suspense>
+        {loaded && <ConfigDialog active={active} setActive={setActive} />}
       </React.Suspense>
     </>
   );

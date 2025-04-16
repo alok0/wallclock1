@@ -1,77 +1,88 @@
-import { Box, Typography, styled } from "@mui/material";
 import React from "react";
 import { AutoSizer } from "./Autosize";
 import { useTime } from "./TimeData";
+import { css } from "./css-instance";
+import { useTheme } from "./theme";
 
-const Container = styled("div")(({ theme }) => ({
-  position: "absolute",
-  inset: 0,
+const Container: React.FC<React.PropsWithChildren> = ({ children }) => (
+  <>
+    <div
+      className={css({
+        position: "absolute",
+        inset: 0,
 
-  ...theme.typography.body1,
-  background: theme.palette.background.default,
-  color: theme.palette.text.primary,
-
-  overflow: "hidden",
-  display: "grid",
-  gridTemplateColumns: "1fr 3fr",
-  gridGap: "1vmin",
-  padding: "1vmax",
-  placeItems: "stretch",
-  pointerEvents: "none",
-}));
+        overflow: "hidden",
+        display: "grid",
+        gridTemplateColumns: "1fr 3fr",
+        gridGap: "1vmin",
+        padding: "1vmax",
+        placeItems: "stretch",
+        pointerEvents: "none",
+      })}
+    >
+      {children}
+    </div>
+  </>
+);
 
 export const BigDisplay: React.FC = () => {
   const time = useTime();
+  const theme = useTheme();
 
   return (
     <Container>
       <AutoSizer>
-        <Box
-          sx={{
+        <div
+          style={{
             display: "grid",
             gridTemplateRows: "1fr 1fr",
             justifyItems: "center",
-            gap: 12,
+            gap: 96,
             whiteSpace: "nowrap",
           }}
         >
-          <Typography
-            variant="h2"
-            component="div"
-            sx={{ fontSize: "500px" }}
-            color="text.secondary"
-            noWrap
+          <div
+            style={{
+              fontSize: 500,
+              fontWeight: 100,
+              color: theme.color.text.secondary,
+              whiteSpace: "nowrap",
+            }}
           >
             {time.format("ddd")}
-          </Typography>
-          <Typography
-            variant="h2"
-            component="div"
-            sx={{ fontSize: "500px" }}
-            color="text.secondary"
-            noWrap
+          </div>
+          <div
+            style={{
+              fontSize: 500,
+              fontWeight: 100,
+              color: theme.color.text.secondary,
+              whiteSpace: "nowrap",
+            }}
           >
             {time.format("MMM DD")}
-          </Typography>
-        </Box>
+          </div>
+        </div>
       </AutoSizer>
       <AutoSizer>
-        <Typography
-          variant="h1"
-          sx={{ fontSize: "800px" }}
-          component="div"
-          noWrap
+        <div
+          style={{
+            fontSize: 800,
+            fontWeight: 100,
+            whiteSpace: "nowrap",
+          }}
         >
           {time.format("HH:mm")}
-          <Typography
-            variant="h2"
-            component="span"
-            sx={{ display: "inline", fontSize: "150px" }}
-            noWrap
+          <span
+            style={{
+              display: "inline",
+              fontSize: 150,
+              fontWeight: 100,
+              whiteSpace: "nowrap",
+            }}
           >
             {time.format("ss")}
-          </Typography>
-        </Typography>
+          </span>
+        </div>
       </AutoSizer>
     </Container>
   );

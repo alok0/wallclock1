@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 export const AutoSizer: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -22,9 +21,9 @@ export const AutoSizer: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <svg viewBox={`0 0 ${size?.width || 1} ${size?.height || 1}`}>
       <foreignObject height={10000} width={10000}>
-        <Box ref={setContainer} sx={{ position: "absolute" }}>
+        <div ref={setContainer} style={{ position: "absolute" }}>
           {children}
-        </Box>
+        </div>
       </foreignObject>
     </svg>
   );

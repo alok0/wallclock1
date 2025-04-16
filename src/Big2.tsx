@@ -1,55 +1,62 @@
-import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
 import { AutoSizer } from "./Autosize";
-import { ConfigOverride, useConfig } from "./Config";
+import { useConfig } from "./Config";
 import { useTime } from "./TimeData";
 import { cleanZoneName } from "./cleanZoneName";
+import { useTheme } from "./theme";
 
 const ZoneDisplayBox: React.FC<{ timeZone: string }> = ({ timeZone }) => {
+  const theme = useTheme();
   const time = useTime();
   return (
-    <Paper
-      variant="outlined"
-      sx={{
-        p: ".5vmin",
+    <div
+      style={{
+        padding: ".5vmin",
         display: "grid",
         gridTemplateRows: "1fr 2fr",
         placeItems: "stretch",
         overflow: "hidden",
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: theme.color.divider,
+        borderRadius: 8,
       }}
     >
       <AutoSizer>
-        <Typography
-          color="text.secondary"
-          sx={{ fontSize: "400px" }}
-          component="div"
-          noWrap
+        <div
+          style={{
+            color: theme.color.text.secondary,
+            fontSize: 400,
+            whiteSpace: "nowrap",
+          }}
         >
           {cleanZoneName(timeZone)}
-        </Typography>
+        </div>
       </AutoSizer>
       <AutoSizer>
-        <Typography
-          sx={{ fontSize: "400px", lineHeight: 1 }}
-          component="time"
-          noWrap
+        <time
+          style={{
+            fontSize: 400,
+            lineHeight: 1,
+            whiteSpace: "nowrap",
+          }}
         >
           {time.tz(timeZone).format("HH:mm")}
-        </Typography>
+        </time>
       </AutoSizer>
-    </Paper>
+    </div>
   );
 };
 
 export const Big2: React.FC = () => {
   const time = useTime();
   const { display } = useConfig();
+  const theme = useTheme();
 
   return (
     <>
-      <ConfigOverride />
-      <Box
-        sx={{
+      <div
+        style={{
           position: "absolute",
           inset: 0,
           maxWidth: "200vh",
@@ -60,40 +67,37 @@ export const Big2: React.FC = () => {
           display: "grid",
           gridTemplateRows: "1fr 5fr 1fr",
           gap: "1vmin",
-          padding: 2,
+          padding: 16,
           placeItems: "stretch",
           cursor: "none",
         }}
       >
         <AutoSizer>
-          <Typography
-            variant="h2"
-            component="time"
-            sx={{ fontSize: "500px" }}
-            color="text.secondary"
-            noWrap
+          <time
+            style={{
+              color: theme.color.text.secondary,
+              fontSize: 500,
+              fontWeight: 300,
+              whiteSpace: "nowrap",
+            }}
           >
             {time.format("ddd, MMM DD, YYYY")}
-          </Typography>
+          </time>
         </AutoSizer>
         <AutoSizer>
-          <Typography
-            sx={{ fontSize: "800px", lineHeight: 1, fontWeight: 100 }}
-            component="time"
-            noWrap
+          <time
+            style={{ fontSize: 800, fontWeight: 100, whiteSpace: "nowrap" }}
           >
             {time.format("HH:mm")}
-            <Typography
-              component="span"
-              sx={{ display: "inline", fontSize: "150px", fontWeight: 300 }}
-              noWrap
+            <span
+              style={{ display: "inline", fontSize: "150px", fontWeight: 300 }}
             >
               {time.format("ss")}
-            </Typography>
-          </Typography>
+            </span>
+          </time>
         </AutoSizer>
-        <Box
-          sx={{
+        <div
+          style={{
             display: "grid",
             gridAutoColumns: "1fr",
             gridAutoFlow: "column",
@@ -105,8 +109,8 @@ export const Big2: React.FC = () => {
           {display.slice(0, 8).map((timeZone) => (
             <ZoneDisplayBox key={timeZone} timeZone={timeZone} />
           ))}
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };
