@@ -7,15 +7,14 @@ import { defineConfig } from "vite";
 const dirname = new URL(".", import.meta.url).pathname;
 
 export default defineConfig((env) => {
-  const version =
-    env.command === "build"
-      ? String(
-          execSync("git describe --tags --always --dirty", {
-            cwd: dirname,
-            encoding: "utf-8",
-          }),
-        ).trim()
-      : "";
+  const version = env.command === "build"
+    ? String(
+      execSync("git describe --tags --always --dirty", {
+        cwd: dirname,
+        encoding: "utf-8",
+      }),
+    ).trim()
+    : "";
 
   return defineConfig({
     root: "src",

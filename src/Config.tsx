@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { useEffect, useMemo } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
+import { useLocation } from "wouter";
 
 export type ConfigType = { display: string[] };
 
@@ -63,22 +63,26 @@ export const useConfig = () => {
 
 export const ConfigOverride: React.FC = () => {
   const { setDisplay } = useConfig();
-  const location = useLocation();
-  const navTo = useNavigate();
+  const [location, navTo] = useLocation();
+  const params = useMemo(() => {
+    return new URL(location, import.meta.url).searchParams;
+  }, [location]);
+
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
     const overrideZone = params.get("override-zones");
     if (overrideZone) {
       const zones: unknown = JSON.parse(overrideZone);
       if (zones && typeof zones === "object" && Array.isArray(zones)) {
         setTimeout(() => {
-          console.log({ overrideZone, zones });
+          const newLoc = location.replace(/\?.*$/, "");
+          console.log({ overrideZone, zones, newLoc });
           setDisplay(zones.map(String));
-          void navTo(location.pathname, { replace: true });
+
+          navTo(newLoc, { replace: true });
         }, 0);
       }
     }
-  }, [location, navTo, setDisplay]);
+  }, [location, navTo, params, setDisplay]);
 
   return null;
 };

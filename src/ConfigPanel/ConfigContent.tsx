@@ -16,7 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useMatch, useNavigate } from "react-router-dom";
+import { useRoute, useLocation } from "wouter";
 import { useConfig } from "../Config";
 import { timezones } from "../timezones";
 import { getVersion } from "../Version";
@@ -24,8 +24,8 @@ import { getVersion } from "../Version";
 const NavButton: React.FC<
   React.PropsWithChildren<{ path: string; handleClose: () => unknown }>
 > = ({ path, handleClose, children }) => {
-  const match = useMatch(path);
-  const navTo = useNavigate();
+  const [match] = useRoute(path);
+  const [, navTo] = useLocation();
   return (
     <ListItemButton
       onClick={() => {

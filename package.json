@@ -19,8 +19,8 @@
     "lean-qr": "2.4.1",
     "preact": "10.26.5",
     "react": "19.1.0",
-    "react-router-dom": "7.5.0",
-    "usehooks-ts": "3.1.1"
+    "usehooks-ts": "3.1.1",
+    "wouter": "3.7.0"
   },
   "devDependencies": {
     "@eslint/js": "9.24.0",
@@ -39,7 +39,7 @@
     "prettier": "3.5.3",
     "typescript": "5.8.3",
     "typescript-eslint": "8.29.1",
-    "vite": "6.2.6"
+    "vite": "6.3.0"
   },
   "resolutions": {
     "esbuild": "0.25.2",
