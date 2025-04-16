@@ -39,7 +39,7 @@ export const useConfig = () => {
           return null;
         })
         .filter((o) => !!o)
-        .sort((a, b) => a.offset - b.offset)
+        .toSorted((a, b) => a.offset - b.offset)
         .map(({ zone }) => zone);
 
       return {

@@ -8,11 +8,11 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "module": "ES2020",
+    "module": "ES2022",
     "moduleResolution": "Bundler",
-    "target": "ES2018",
+    "target": "ES2022",
     "jsx": "react",
-    "lib": ["DOM", "ES2022"]
+    "lib": ["DOM", "ES2023"]
   },
   "include": ["./src/**/*", "*.mts"]
 }

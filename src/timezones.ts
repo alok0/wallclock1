@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 
-export const timezones = [...Intl.supportedValuesOf("timeZone"), "UTC"]
+export const timezones = [
+  ...new Set([...Intl.supportedValuesOf("timeZone"), "UTC"]),
+]
   .map((zone) => {
     try {
       const offset = dayjs().tz(zone).utcOffset();
@@ -14,5 +16,5 @@ export const timezones = [...Intl.supportedValuesOf("timeZone"), "UTC"]
     return null;
   })
   .filter((o) => !!o)
-  .sort((a, b) => a.offset - b.offset)
+  .toSorted((a, b) => a.offset - b.offset)
   .map(({ zone }) => zone);
