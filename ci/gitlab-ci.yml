@@ -1,12 +1,10 @@
 image: node:lts
 
-before_script:
-  - yarn install --immutable
-
 test-compile:
   stage: deploy
   needs: []
   script:
+    - yarn install --immutable
     - yarn tsc --noEmit
     - yarn build
     - yarn lint
@@ -15,6 +13,7 @@ pages:
   stage: deploy
   needs: []
   script:
+    - yarn install --immutable
     - yarn build
   artifacts:
     paths:
@@ -24,6 +23,7 @@ pages:
 
 sync:
   stage: .pre
+  needs: []
   script:
     - git remote add github https://github.com/alok0/wallclock1.git
     - git remote add gitlab $(node -e 'let u = new URL(process.env.CI_REPOSITORY_URL);u.password=process.env.REPO_TOKEN;process.stdout.write(u.toString());')
