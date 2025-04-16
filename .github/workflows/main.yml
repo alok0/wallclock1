@@ -37,8 +37,8 @@ jobs:
           path: ${{ steps.cache-vars.outputs.dir }}
           key: yarn-${{ steps.cache-vars.outputs.month }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            yarn-cache-${{ steps.cache-vars.outputs.month }}
-            yarn-cache-${{ steps.cache-vars.outputs.year }}
+            yarn-${{ steps.cache-vars.outputs.month }}
+            yarn-${{ steps.cache-vars.outputs.year }}
       - run: yarn install --immutable
       - run: yarn lint
       - run: yarn build
