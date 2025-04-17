@@ -11,13 +11,16 @@ import {
   List,
   ListItemButton,
   ListItemIcon,
+  MenuItem,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useRoute, useLocation } from "wouter";
+import { useLocalStorage } from "usehooks-ts";
+import { useLocation, useRoute } from "wouter";
 import { useConfig } from "../Config";
+import { THEMES } from "../theme";
 import { timezones } from "../timezones";
 import { getVersion } from "../Version";
 
@@ -52,6 +55,7 @@ const ConfigContent: React.FC<{
   handleClose: () => unknown;
 }> = ({ handleClose }) => {
   const { display, setDisplay } = useConfig();
+  const [themeKey, setThemeKey] = useLocalStorage("WC-THEME", 0);
 
   return (
     <>
@@ -84,6 +88,20 @@ const ConfigContent: React.FC<{
           )}
           sx={{ minWidth: "33vw" }}
         />
+        <TextField
+          select
+          margin="normal"
+          variant="filled"
+          value={themeKey}
+          label="Theme"
+          sx={{ minWidth: "30ch" }}
+        >
+          {THEMES.map((t, k) => (
+            <MenuItem key={k} value={k} onClick={() => setThemeKey(k)}>
+              {t.name}
+            </MenuItem>
+          ))}
+        </TextField>
         <DialogContentText sx={{ mt: 2, mb: 1 }}>Modes</DialogContentText>
         <Paper variant="outlined" sx={{ background: "transparent" }}>
           <List component="nav" dense>
