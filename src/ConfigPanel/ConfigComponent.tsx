@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { css } from "../css-instance";
+import classes from "./ConfigComponent.module.css";
 
 const ConfigDialog = React.lazy(() => import("./ConfigDialog"));
 
@@ -28,18 +28,7 @@ export const ConfigComponents: React.FC = () => {
 
   return (
     <>
-      <div
-        className={css({
-          position: "fixed",
-          zIndex: 10000,
-          bottom: 8,
-          right: 8,
-          opacity: 0,
-          transition: "all 300ms",
-          "&:hover": { opacity: 1 },
-          filter: "grayscale(100%)",
-        })}
-      >
+      <div className={classes.btncontainer}>
         <button
           aria-label="Open Menu"
           onClick={() => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { TZDisplay } from "./TZDisplay";
 import { useTime } from "./TimeData";
-import { css } from "./css-instance";
+import classes from "./MainDisplay.module.css";
 
 export const TopDisplay: React.FC = () => {
   const time = useTime();
@@ -18,15 +18,7 @@ export const TopDisplay: React.FC = () => {
       <time style={{ textAlign: "center", fontSize: "10rem" }}>
         {time.format("HH:mm")}
       </time>
-      <time
-        className={css({
-          textAlign: "center",
-          fontSize: "1.5rem",
-          "@media (min-width:768px)": {
-            fontSize: "2.2rem",
-          },
-        })}
-      >
+      <time className={classes.secondline}>
         {time.format("dddd YYYY-MM-DD HH:mm:ss[ ]z")}
       </time>
     </div>

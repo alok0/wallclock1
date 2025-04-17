@@ -3,10 +3,8 @@ import { AutoSizer } from "./Autosize";
 import { useConfig } from "./Config";
 import { useTime } from "./TimeData";
 import { cleanZoneName } from "./cleanZoneName";
-import { useTheme } from "./theme";
 
 const ZoneDisplayBox: React.FC<{ timeZone: string }> = ({ timeZone }) => {
-  const theme = useTheme();
   const time = useTime();
   return (
     <div
@@ -18,14 +16,14 @@ const ZoneDisplayBox: React.FC<{ timeZone: string }> = ({ timeZone }) => {
         overflow: "hidden",
         borderStyle: "solid",
         borderWidth: 1,
-        borderColor: theme.color.divider,
+        borderColor: "var(--theme-color-divider)",
         borderRadius: 8,
       }}
     >
       <AutoSizer>
         <div
           style={{
-            color: theme.color.text.secondary,
+            color: "var(--theme-color-text2)",
             fontSize: 400,
             whiteSpace: "nowrap",
           }}
@@ -51,7 +49,6 @@ const ZoneDisplayBox: React.FC<{ timeZone: string }> = ({ timeZone }) => {
 export const Big2: React.FC = () => {
   const time = useTime();
   const { display } = useConfig();
-  const theme = useTheme();
 
   return (
     <>
@@ -75,7 +72,7 @@ export const Big2: React.FC = () => {
         <AutoSizer>
           <time
             style={{
-              color: theme.color.text.secondary,
+              color: "var(--theme-color-text2)",
               fontSize: 500,
               fontWeight: 300,
               whiteSpace: "nowrap",

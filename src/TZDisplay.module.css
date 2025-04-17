@@ -1,0 +1,12 @@
+.table {
+  margin-top: 16px;
+  border-collapse: collapse;
+  width: 100%;
+
+  & td {
+    padding: 16px;
+    border-color: var(--theme-color-divider);
+    border-style: solid;
+    border-width: 1px 0;
+  }
+}

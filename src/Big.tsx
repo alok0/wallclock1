@@ -1,13 +1,11 @@
 import React from "react";
 import { AutoSizer } from "./Autosize";
 import { useTime } from "./TimeData";
-import { css } from "./css-instance";
-import { useTheme } from "./theme";
 
 const Container: React.FC<React.PropsWithChildren> = ({ children }) => (
   <>
     <div
-      className={css({
+      style={{
         position: "absolute",
         inset: 0,
 
@@ -18,7 +16,7 @@ const Container: React.FC<React.PropsWithChildren> = ({ children }) => (
         padding: "1vmax",
         placeItems: "stretch",
         pointerEvents: "none",
-      })}
+      }}
     >
       {children}
     </div>
@@ -27,8 +25,6 @@ const Container: React.FC<React.PropsWithChildren> = ({ children }) => (
 
 export const BigDisplay: React.FC = () => {
   const time = useTime();
-  const theme = useTheme();
-
   return (
     <Container>
       <AutoSizer>
@@ -46,7 +42,7 @@ export const BigDisplay: React.FC = () => {
               fontSize: 500,
               fontWeight: 100,
               lineHeight: 1,
-              color: theme.color.text.secondary,
+              color: "var(--theme-color-text2)",
               whiteSpace: "nowrap",
             }}
           >
@@ -57,7 +53,7 @@ export const BigDisplay: React.FC = () => {
               fontSize: 500,
               fontWeight: 100,
               lineHeight: 1,
-              color: theme.color.text.secondary,
+              color: "var(--theme-color-text2)",
               whiteSpace: "nowrap",
             }}
           >

@@ -1,4 +1,3 @@
-import { Global } from "@emotion/react";
 import React, { useEffect } from "react";
 import { Route, Router, Switch, useLocation } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
@@ -7,7 +6,7 @@ import Big2 from "./Big2";
 import { ConfigOverride } from "./Config";
 import { ConfigComponents } from "./ConfigPanel/ConfigComponent";
 import MainDisplay from "./MainDisplay";
-import { ThemeContext, useTheme } from "./theme";
+import { ThemeContext } from "./theme";
 import { TimeProvider } from "./TimeData";
 import { VersionChecker } from "./Version";
 const QRDisplay = React.lazy(() => import("./QRDisplay"));
@@ -29,25 +28,8 @@ const Redirect = () => {
 };
 
 const Main = () => {
-  const theme = useTheme();
   return (
     <TimeProvider>
-      <Global
-        styles={{
-          "*": { boxSizing: "border-box" },
-          ":root": {
-            colorScheme: theme.mode,
-          },
-          "html, body": {
-            fontFamily: "Ubuntu Sans",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: 16,
-            color: theme.color.text.primary,
-            backgroundColor: theme.color.background,
-          },
-        }}
-      />
       <Switch>
         <Route path="/">
           <MainDisplay />

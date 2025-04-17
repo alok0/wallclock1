@@ -14,20 +14,30 @@
       href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3C%2Fsvg%3E"
       type="image/svg+xml"
     />
-  </head>
-  <body>
-    <div
-      style="
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        color-scheme: var(--theme-mode, dark);
+      }
+      html,
+      body {
+        font-family: "Ubuntu Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: var(--theme-color-text1, #333);
+        background-color: var(--theme-color-bg, #000);
+      }
+      .loading-text {
         position: absolute;
         inset: 0;
-        z-index: -1000;
         background-color: #000;
-        color: #fff;
-        text-align: center;
+        color: #777;
         padding: 32px;
-      "
-    >
-      Loading...
-    </div>
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-text">Loading...</div>
   </body>
 </html>

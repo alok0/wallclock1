@@ -1,22 +1,20 @@
 import { createTheme, Dialog, ThemeProvider } from "@mui/material";
-import ConfigContent from "./ConfigContent";
 import React, { useMemo } from "react";
-import { useTheme } from "../theme";
+import ConfigContent from "./ConfigContent";
 
 const ConfigDialog: React.FC<{
   active: boolean;
   setActive: (v: boolean) => unknown;
 }> = ({ active, setActive }) => {
-  const { mode } = useTheme();
   const theme = useMemo(
     () =>
       createTheme({
         typography: {
           fontFamily: '"Ubuntu Sans","Roboto",sans-serif',
         },
-        palette: { mode },
+        palette: { mode: "dark" },
       }),
-    [mode],
+    [],
   );
 
   return (

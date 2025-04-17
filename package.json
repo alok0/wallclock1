@@ -10,7 +10,6 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@emotion/css": "11.13.5",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
     "@mui/icons-material": "7.0.2",
@@ -39,6 +38,7 @@
     "prettier": "3.5.3",
     "typescript": "5.8.3",
     "typescript-eslint": "8.29.1",
+    "typescript-plugin-css-modules": "5.1.0",
     "vite": "6.3.0"
   },
   "resolutions": {

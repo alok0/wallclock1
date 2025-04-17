@@ -12,7 +12,8 @@
     "moduleResolution": "Bundler",
     "target": "ES2022",
     "jsx": "react",
-    "lib": ["DOM", "ES2023"]
+    "lib": ["DOM", "ES2023"],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["./src/**/*", "*.mts"]
 }

@@ -2,8 +2,7 @@ import React from "react";
 import { useConfig } from "./Config";
 import { useTime } from "./TimeData";
 import { cleanZoneName } from "./cleanZoneName";
-import { css } from "./css-instance";
-import { useTheme } from "./theme";
+import classes from "./TZDisplay.module.css";
 
 const TimeInZone = ({ timeZone }: { timeZone: string }) => {
   const time = useTime();
@@ -13,23 +12,9 @@ const TimeInZone = ({ timeZone }: { timeZone: string }) => {
 
 export const TZDisplay: React.FC = () => {
   const { display } = useConfig();
-  const theme = useTheme();
 
   return (
-    <table
-      className={css({
-        marginTop: 16,
-        borderCollapse: "collapse",
-        width: "100%",
-
-        td: {
-          padding: 16,
-          borderColor: theme.color.divider,
-          borderStyle: "solid",
-          borderWidth: "1px 0",
-        },
-      })}
-    >
+    <table className={classes.table}>
       <tbody>
         {display.map((timeZone) => (
           <tr key={timeZone}>
