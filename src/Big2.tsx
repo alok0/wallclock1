@@ -86,7 +86,12 @@ export const Big2: React.FC = () => {
         </AutoSizer>
         <AutoSizer>
           <time
-            style={{ fontSize: 800, fontWeight: 100, whiteSpace: "nowrap" }}
+            style={{
+              fontSize: 800,
+              fontWeight: 100,
+              lineHeight: 1,
+              whiteSpace: "nowrap",
+            }}
           >
             {time.format("HH:mm")}
             <span

@@ -45,6 +45,7 @@ export const BigDisplay: React.FC = () => {
             style={{
               fontSize: 500,
               fontWeight: 100,
+              lineHeight: 1,
               color: theme.color.text.secondary,
               whiteSpace: "nowrap",
             }}
@@ -55,6 +56,7 @@ export const BigDisplay: React.FC = () => {
             style={{
               fontSize: 500,
               fontWeight: 100,
+              lineHeight: 1,
               color: theme.color.text.secondary,
               whiteSpace: "nowrap",
             }}
@@ -64,10 +66,11 @@ export const BigDisplay: React.FC = () => {
         </div>
       </AutoSizer>
       <AutoSizer>
-        <div
+        <time
           style={{
             fontSize: 800,
             fontWeight: 100,
+            lineHeight: 1,
             whiteSpace: "nowrap",
           }}
         >
@@ -82,7 +85,7 @@ export const BigDisplay: React.FC = () => {
           >
             {time.format("ss")}
           </span>
-        </div>
+        </time>
       </AutoSizer>
     </Container>
   );
