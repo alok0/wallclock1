@@ -9,6 +9,7 @@ import MainDisplay from "./MainDisplay";
 import { ThemeContext } from "./theme";
 import { TimeProvider } from "./TimeData";
 import { VersionChecker } from "./Version";
+import { ErrorHandler } from "./ErrorHandler";
 const QRDisplay = React.lazy(() => import("./QRDisplay"));
 
 const Redirect = () => {
@@ -54,16 +55,18 @@ const Main = () => {
 export const App: React.FC = () => {
   return (
     <React.StrictMode>
-      <Router hook={useHashLocation}>
-        <ThemeContext>
-          <ConfigOverride />
-          <VersionChecker />
-          <React.Suspense fallback={<></>}>
-            <Main />
-            <ConfigComponents />
-          </React.Suspense>
-        </ThemeContext>
-      </Router>
+      <ErrorHandler>
+        <Router hook={useHashLocation}>
+          <ThemeContext>
+            <ConfigOverride />
+            <VersionChecker />
+            <React.Suspense fallback={<></>}>
+              <Main />
+              <ConfigComponents />
+            </React.Suspense>
+          </ThemeContext>
+        </Router>
+      </ErrorHandler>
     </React.StrictMode>
   );
 };
