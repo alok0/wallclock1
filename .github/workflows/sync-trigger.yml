@@ -12,6 +12,6 @@ jobs:
     steps:
       - uses: eic/trigger-gitlab-ci@v3
         with:
-          project_id: 23402816
+          project_id: ${{ secrets.GLP_PRJ_ID }}
           ref_name: master
           token: ${{ secrets.GLP_TOKEN }}
