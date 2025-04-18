@@ -35,6 +35,7 @@ const MainDisplay: React.FC = () => {
         gridTemplateColumns: "auto",
         justifyItems: "center",
         alignItems: "start",
+        overflow: "auto",
       }}
     >
       <div
