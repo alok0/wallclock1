@@ -3,6 +3,10 @@ image: node:lts
 test-compile:
   stage: deploy
   needs: []
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+      when: never
+    - when: on_success
   script:
     - yarn install --immutable
     - yarn tsc --noEmit
@@ -12,18 +16,26 @@ test-compile:
 pages:
   stage: deploy
   needs: []
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+      when: never
+    - if: "$CI_DEFAULT_BRANCH == $CI_COMMIT_BRANCH"
+      when: on_success
+    - when: never
   script:
     - yarn install --immutable
     - yarn build
   artifacts:
     paths:
       - public
-  only:
-    - master
 
 sync:
   stage: .pre
   needs: []
+  rules:
+    - if: "$CI_DEFAULT_BRANCH == $CI_COMMIT_BRANCH"
+      when: on_success
+    - when: never
   script:
     - git remote add github https://github.com/alok0/wallclock1.git
     - git remote add gitlab $(node -e 'let u = new URL(process.env.CI_REPOSITORY_URL);u.password=process.env.REPO_TOKEN;process.stdout.write(u.toString());')
