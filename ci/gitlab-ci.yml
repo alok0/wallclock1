@@ -30,7 +30,7 @@ pages:
       - public
 
 sync:
-  stage: .pre
+  stage: deploy
   needs: []
   rules:
     - if: "$CI_DEFAULT_BRANCH == $CI_COMMIT_BRANCH"
