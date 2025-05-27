@@ -18,7 +18,7 @@ export const TopDisplay: React.FC = () => {
       <time style={{ textAlign: "center", fontSize: "10rem" }}>
         {time.format("HH:mm")}
       </time>
-      <time className={classes.secondline}>
+      <time className={classes["secondline"]}>
         {time.format("dddd YYYY-MM-DD HH:mm:ss[ ]z")}
       </time>
     </div>

@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export const getVersion = () => {
   const version = __VERSION__;

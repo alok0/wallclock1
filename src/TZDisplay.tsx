@@ -14,7 +14,7 @@ export const TZDisplay: React.FC = () => {
   const { display } = useConfig();
 
   return (
-    <table className={classes.table}>
+    <table className={classes["table"]}>
       <tbody>
         {display.map((timeZone) => (
           <tr key={timeZone}>

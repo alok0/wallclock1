@@ -28,9 +28,10 @@ export const ConfigComponents: React.FC = () => {
 
   return (
     <>
-      <div className={classes.btncontainer}>
+      <div className={classes["btncontainer"]}>
         <button
           aria-label="Open Menu"
+          type="button"
           onClick={() => {
             setLoaded(true);
             setActive(true);

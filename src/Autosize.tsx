@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { requireTruthy } from "./util";
 
 export const AutoSizer: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [container, setContainer] = useState<HTMLElement | null>(null);
@@ -10,7 +11,7 @@ export const AutoSizer: React.FC<React.PropsWithChildren> = ({ children }) => {
     }
 
     const observer = new ResizeObserver(([entry]) => {
-      setSize(entry.contentRect);
+      setSize(requireTruthy(entry).contentRect);
     });
     observer.observe(container);
     return () => {

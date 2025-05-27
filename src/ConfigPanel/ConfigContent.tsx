@@ -97,7 +97,7 @@ const ConfigContent: React.FC<{
           sx={{ minWidth: "30ch" }}
         >
           {THEMES.map((t, k) => (
-            <MenuItem key={k} value={k} onClick={() => setThemeKey(k)}>
+            <MenuItem key={t.name} value={k} onClick={() => setThemeKey(k)}>
               {t.name}
             </MenuItem>
           ))}

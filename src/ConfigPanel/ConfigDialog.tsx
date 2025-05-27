@@ -15,7 +15,7 @@ const ConfigDialog: React.FC<{
         typography: {
           fontFamily: '"Ubuntu Sans","Roboto",sans-serif',
         },
-        palette: { mode: THEMES[themeKey].mode || "dark" },
+        palette: { mode: THEMES[themeKey]?.mode || "dark" },
       }),
     [themeKey],
   );

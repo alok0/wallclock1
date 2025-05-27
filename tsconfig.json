@@ -1,19 +1,14 @@
 {
+  "extends": [
+    "@tsconfig/strictest/tsconfig.json",
+    "@tsconfig/vite-react/tsconfig.json"
+  ],
   "compilerOptions": {
-    "outDir": "./build/",
-    "sourceMap": false,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "module": "ES2022",
-    "moduleResolution": "Bundler",
-    "target": "ES2022",
-    "jsx": "react",
-    "lib": ["DOM", "ES2023"],
+    "allowJs": true,
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "exactOptionalPropertyTypes": false,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
+  "exclude": ["public"],
   "include": ["./src/**/*", "*.mts"]
 }

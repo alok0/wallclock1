@@ -73,13 +73,13 @@ export const ConfigOverride: React.FC = () => {
     if (overrideZone) {
       const zones: unknown = JSON.parse(overrideZone);
       if (zones && typeof zones === "object" && Array.isArray(zones)) {
-        setTimeout(() => {
+        window.queueMicrotask(() => {
           const newLoc = location.replace(/\?.*$/, "");
           console.log({ overrideZone, zones, newLoc });
           setDisplay(zones.map(String));
 
           navTo(newLoc, { replace: true });
-        }, 0);
+        });
       }
     }
   }, [location, navTo, params, setDisplay]);

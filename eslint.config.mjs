@@ -1,14 +1,27 @@
 // @ts-check
 
+import eslintReactUnified from "@eslint-react/eslint-plugin";
 import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
-import reactPlugin from "eslint-plugin-react";
-import promisePlugin from "eslint-plugin-promise";
-import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import prettierPlugin from "eslint-config-prettier";
+import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
+import promisePlugin from "eslint-plugin-promise";
+import reactPlugin from "eslint-plugin-react";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
 
 const dirname = new URL(".", import.meta.url).pathname;
+
+/**
+ * @template T
+ * @param {T|undefined|null|0|false|""} v
+ * @returns {T}
+ */
+const requireTruthy = (v) => {
+  if (!v) {
+    throw new Error("required value not present");
+  }
+  return v;
+};
 
 const commonConfigs = tseslint.config(
   eslint.configs.recommended,
@@ -34,23 +47,17 @@ export default tseslint.config(
       },
       ...commonConfigs,
       {
-        plugins: { react: reactPlugin },
-        rules: reactPlugin.configs.recommended.rules,
+        ...requireTruthy(reactPlugin.configs.flat["jsx-runtime"]),
         settings: { react: { version: "detect" } },
       },
-      {
-        plugins: { "react-hooks": reactHooksPlugin },
-        rules: reactHooksPlugin.configs.recommended.rules,
-      },
-      {
-        plugins: { "jsx-a11y": jsxA11yPlugin },
-        languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } },
-        rules: jsxA11yPlugin.configs.recommended.rules,
-      },
+      eslintReactUnified.configs["recommended-type-checked"],
+      reactHooksPlugin.configs["recommended-latest"],
+      jsxA11yPlugin.flatConfigs.recommended,
       {
         rules: {
           "react/display-name": "off",
           "react/prop-types": "off",
+          "@eslint-react/no-use-context": "off",
         },
       },
       {

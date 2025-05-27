@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
-import advancedFormat from "dayjs/plugin/advancedFormat";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -16,20 +16,26 @@ export const TimeProvider: React.FC<React.PropsWithChildren> = ({
   const [time, setTime] = useState(() => dayjs());
 
   useEffect(() => {
-    const handle = setInterval(() => {
-      setTimeout(() => setTime(dayjs()), 1001 - new Date().getMilliseconds());
+    let timeoutHandle: number | null = null;
+    const handle = window.setInterval(() => {
+      timeoutHandle = window.setTimeout(
+        () => setTime(dayjs()),
+        1001 - new Date().getMilliseconds(),
+      );
     }, 1000);
 
     return () => {
+      if (timeoutHandle) {
+        clearTimeout(timeoutHandle);
+      }
       clearInterval(handle);
     };
   }, []);
 
   document.title = time.format("YYYY-MM-DD HH:mm:ss z");
 
-  return (
-    <TimeContext.Provider value={{ time }}>{children}</TimeContext.Provider>
-  );
+  const value = useMemo(() => ({ time }), [time]);
+  return <TimeContext value={value}>{children}</TimeContext>;
 };
 
 export const useTime = () => useContext(TimeContext).time;

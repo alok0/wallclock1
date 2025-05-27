@@ -1,4 +1,4 @@
-import { ErrorInfo } from "preact";
+import type { ErrorInfo } from "preact";
 import { useErrorBoundary } from "preact/hooks";
 import React, { useEffect, useState } from "react";
 import classes from "./ErrorHandler.module.css";
@@ -17,7 +17,7 @@ const Fallback: React.FC<{
   }, [error]);
 
   return (
-    <div className={classes.error}>
+    <div className={classes["error"]}>
       <h1>Unexpected Error</h1>
       <p>{String(error.error)}</p>
       <p>
@@ -29,10 +29,10 @@ const Fallback: React.FC<{
       </p>
       {error.error instanceof Error && (
         <>
-          <p className={classes.small}>{String(error.error.stack)}</p>
+          <p className={classes["small"]}>{String(error.error.stack)}</p>
         </>
       )}
-      <p className={classes.small}>{error.errorInfo?.componentStack}</p>
+      <p className={classes["small"]}>{error.errorInfo?.componentStack}</p>
     </div>
   );
 };
