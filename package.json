@@ -27,7 +27,7 @@
     "@mui/styled-engine": "7.2.0",
     "@prefresh/vite": "2.4.8",
     "@tsconfig/strictest": "2.0.5",
-    "@tsconfig/vite-react": "6.3.6",
+    "@tsconfig/vite-react": "7.0.0",
     "@types/node": "22.16.0",
     "@types/react": "19.1.8",
     "eslint": "9.30.1",
