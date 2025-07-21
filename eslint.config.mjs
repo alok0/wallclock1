@@ -7,9 +7,10 @@ import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import promisePlugin from "eslint-plugin-promise";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
+import path from "node:path";
 import tseslint from "typescript-eslint";
 
-const dirname = new URL(".", import.meta.url).pathname;
+const dirname = path.resolve(new URL(".", import.meta.url).pathname);
 
 /**
  * @template T
