@@ -52,7 +52,7 @@ export default tseslint.config(
         settings: { react: { version: "detect" } },
       },
       eslintReactUnified.configs["recommended-type-checked"],
-      reactHooksPlugin.configs["recommended-latest"],
+      requireTruthy(reactHooksPlugin.configs.flat["recommended-latest"]),
       jsxA11yPlugin.flatConfigs.recommended,
       {
         rules: {

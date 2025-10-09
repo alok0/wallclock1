@@ -32,7 +32,9 @@ export const TimeProvider: React.FC<React.PropsWithChildren> = ({
     };
   }, []);
 
-  document.title = time.format("YYYY-MM-DD HH:mm:ss z");
+  useEffect(() => {
+    document.title = time.format("YYYY-MM-DD HH:mm:ss z");
+  }, [time]);
 
   const value = useMemo(() => ({ time }), [time]);
   return <TimeContext value={value}>{children}</TimeContext>;
