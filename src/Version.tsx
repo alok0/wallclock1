@@ -10,7 +10,7 @@ export const getVersion = () => {
 };
 
 export const VersionChecker = () => {
-  const versionChangeTime = useRef<Dayjs | null>(null);
+  const versionChangeTimeRef = useRef<Dayjs | null>(null);
   useEffect(() => {
     const handle = setInterval(() => {
       void (async () => {
@@ -21,17 +21,17 @@ export const VersionChecker = () => {
         }
         const versionResponse = await resp.text();
         if (versionResponse === getVersion() || !getVersion()) {
-          versionChangeTime.current = null;
+          versionChangeTimeRef.current = null;
           return;
         }
 
-        if (!versionChangeTime.current) {
-          versionChangeTime.current = dayjs();
+        if (!versionChangeTimeRef.current) {
+          versionChangeTimeRef.current = dayjs();
         }
 
         if (
-          versionChangeTime.current &&
-          dayjs().diff(versionChangeTime.current, "minutes") > 60
+          versionChangeTimeRef.current &&
+          dayjs().diff(versionChangeTimeRef.current, "minutes") > 60
         ) {
           window.location.reload();
           return;
@@ -40,7 +40,7 @@ export const VersionChecker = () => {
         console.warn({
           newVersion: versionResponse,
           currentVersion: getVersion(),
-          detected: versionChangeTime.current.toISOString(),
+          detected: versionChangeTimeRef.current.toISOString(),
         });
       })();
     }, 600_000);
