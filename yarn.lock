@@ -5392,6 +5392,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sunrise-sunset-js@npm:3.2.0":
+  version: 3.2.0
+  resolution: "sunrise-sunset-js@npm:3.2.0"
+  checksum: 10c0/fb9a51dd121ccb3c2154f3161cbdc0aace29b569db59f669988fbf0d3a83694698d82d92ebd48f09d632d7da9511fac5aa3c9e3285cca0a833773f49325ab6d3
+  languageName: node
+  linkType: hard
+
 "supports-color@npm:^7.1.0":
   version: 7.2.0
   resolution: "supports-color@npm:7.2.0"
@@ -5783,6 +5790,7 @@ __metadata:
     preact: "npm:10.28.2"
     prettier: "npm:3.8.0"
     react: "npm:19.2.3"
+    sunrise-sunset-js: "npm:3.2.0"
     typescript: "npm:5.9.3"
     typescript-eslint: "npm:8.53.0"
     typescript-plugin-css-modules: "npm:5.2.0"

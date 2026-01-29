@@ -30,25 +30,23 @@ const Redirect = () => {
 
 const Main = () => {
   return (
-    <TimeProvider>
-      <Switch>
-        <Route path="/">
-          <MainDisplay />
-        </Route>
-        <Route path="/big">
-          <BigDisplay />
-        </Route>
-        <Route path="/big2">
-          <Big2 />
-        </Route>
-        <Route path="/qr">
-          <QRDisplay />
-        </Route>
-        <Route path="/*">
-          <Redirect />
-        </Route>
-      </Switch>
-    </TimeProvider>
+    <Switch>
+      <Route path="/">
+        <MainDisplay />
+      </Route>
+      <Route path="/big">
+        <BigDisplay />
+      </Route>
+      <Route path="/big2">
+        <Big2 />
+      </Route>
+      <Route path="/qr">
+        <QRDisplay />
+      </Route>
+      <Route path="/*">
+        <Redirect />
+      </Route>
+    </Switch>
   );
 };
 
@@ -57,14 +55,16 @@ export const App: React.FC = () => {
     <React.StrictMode>
       <ErrorHandler>
         <Router hook={useHashLocation}>
-          <ThemeContext>
-            <ConfigOverride />
-            <VersionChecker />
-            <React.Suspense fallback={<></>}>
-              <Main />
-              <ConfigComponents />
-            </React.Suspense>
-          </ThemeContext>
+          <TimeProvider>
+            <ThemeContext>
+              <ConfigOverride />
+              <VersionChecker />
+              <React.Suspense fallback={<></>}>
+                <Main />
+                <ConfigComponents />
+              </React.Suspense>
+            </ThemeContext>
+          </TimeProvider>
         </Router>
       </ErrorHandler>
     </React.StrictMode>

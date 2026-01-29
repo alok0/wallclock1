@@ -54,7 +54,7 @@ const NavButton: React.FC<
 const ConfigContent: React.FC<{
   handleClose: () => unknown;
 }> = ({ handleClose }) => {
-  const { display, setDisplay } = useConfig();
+  const { display, coord, setDisplay, setCoord } = useConfig();
   const [themeKey, setThemeKey] = useLocalStorage("WC-THEME", 0);
 
   return (
@@ -102,6 +102,16 @@ const ConfigContent: React.FC<{
             </MenuItem>
           ))}
         </TextField>
+        <TextField
+          margin="normal"
+          variant="filled"
+          value={coord}
+          label="Coordinates"
+          sx={{ minWidth: "30ch", mx: 1 }}
+          onChange={(e) => {
+            setCoord(e.target.value);
+          }}
+        />
         <DialogContentText sx={{ mt: 2, mb: 1 }}>Modes</DialogContentText>
         <Paper variant="outlined" sx={{ background: "transparent" }}>
           <List component="nav" dense>
