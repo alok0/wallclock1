@@ -39,6 +39,33 @@ export const THEMES = [
   },
 ] as const;
 
+const generateColorFromSolarElevation = (elevation: number) => {
+  const colorTable = [
+    [-9, "#700"],
+    [-6, "#F00"],
+    [-2, "hsl(45 87% 67%)"],
+    [0, "hsl(45 100% 75%)"],
+    [2, "hsl(45 99% 99%)"],
+  ] as const;
+  const upper = colorTable.find(([e]) => e > elevation);
+  const lower = colorTable.toReversed().find(([e]) => e <= elevation);
+
+  if (lower && !upper) {
+    return lower[1];
+  }
+  if (upper && !lower) {
+    return upper[1];
+  }
+  if (!upper || !lower) {
+    return "#333";
+  }
+
+  const clamped = Math.max(Math.min(elevation, upper[0]), lower[0]);
+  const mix = ((clamped - lower[0]) / (upper[0] - lower[0])) * 100;
+
+  return `color-mix(in hsl shorter hue, ${upper[1]} ${mix.toFixed(2)}%, ${lower[1]} ${(100 - mix).toFixed(2)}%)`;
+};
+
 export const ThemeContext: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
@@ -56,8 +83,14 @@ export const ThemeContext: React.FC<React.PropsWithChildren> = ({
   }, [themeKey]);
 
   useEffect(() => {
+    if (coord.trim()) {
+      return;
+    }
+    setValuesBasedOnTheme();
+  }, [coord, setValuesBasedOnTheme]);
+
+  useEffect(() => {
     if (!coord.trim()) {
-      setValuesBasedOnTheme();
       return;
     }
     const [latString, lonString] = coord.split(",");
@@ -74,22 +107,20 @@ export const ThemeContext: React.FC<React.PropsWithChildren> = ({
       setValuesBasedOnTheme();
       return;
     }
-    const clamped = Math.max(Math.min(solarPosition.elevation, 5), -5);
-    const mix = ((clamped + 5) / 10) * 100;
 
     document.body.style.setProperty("--theme-mode", "dark");
     document.body.style.setProperty("--theme-color-bg", "#000");
     document.body.style.setProperty(
       "--theme-color-text1",
-      `color-mix(in hsl shorter hue, hsl(63 1 99 / 1) ${mix}%, #c00 ${100 - mix}%)`,
+      generateColorFromSolarElevation(solarPosition.elevation),
     );
     document.body.style.setProperty(
       "--theme-color-text2",
-      `color-mix(in hsl shorter hue, hsl(63 1 99 / .5) ${mix}%, #c009 ${100 - mix}%)`,
+      `rgb(from var(--theme-color-text1) r g b / 50%)`,
     );
     document.body.style.setProperty(
       "--theme-color-divider",
-      `color-mix(in hsl shorter hue, hsl(63 1 99 / .15) ${mix}%, #c003 ${100 - mix}%)`,
+      `rgb(from var(--theme-color-text1) r g b / 15%)`,
     );
   }, [coord, setValuesBasedOnTheme, time]);
 
