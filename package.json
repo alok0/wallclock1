@@ -16,21 +16,21 @@
     "@mui/material": "7.3.7",
     "dayjs": "1.11.19",
     "lean-qr": "2.7.1",
-    "preact": "10.28.2",
+    "preact": "10.28.3",
     "react": "19.2.4",
     "sunrise-sunset-js": "3.2.0",
     "usehooks-ts": "3.1.1",
     "wouter": "3.9.0"
   },
   "devDependencies": {
-    "@eslint-react/eslint-plugin": "2.8.1",
+    "@eslint-react/eslint-plugin": "2.12.2",
     "@eslint/js": "9.39.2",
     "@mui/styled-engine": "7.3.7",
     "@prefresh/vite": "2.4.11",
     "@tsconfig/strictest": "2.0.8",
     "@tsconfig/vite-react": "7.0.2",
-    "@types/node": "24.10.9",
-    "@types/react": "19.2.10",
+    "@types/node": "24.10.12",
+    "@types/react": "19.2.13",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsx-a11y": "6.10.2",
@@ -46,8 +46,8 @@
     "vite": "7.3.1"
   },
   "resolutions": {
-    "esbuild": "0.27.2",
-    "@types/react": "19.2.10",
+    "esbuild": "0.27.3",
+    "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3"
   },
   "lint-staged": {
