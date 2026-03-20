@@ -7,35 +7,39 @@ import { defineConfig } from "vite";
 const dirname = new URL(".", import.meta.url).pathname;
 
 export default defineConfig((env) => {
-  const version = env.command === "build"
-    ? String(
-      execSync("git describe --tags --always --dirty", {
-        cwd: dirname,
-        encoding: "utf-8",
-      }),
-    ).trim()
-    : "";
+  const version =
+    env.command === "build"
+      ? String(
+          execSync("git describe --tags --always --dirty", {
+            cwd: dirname,
+            encoding: "utf-8",
+          }),
+        ).trim()
+      : "";
 
   return defineConfig({
     root: "src",
     base: "./",
     publicDir: resolve(dirname, "static"),
     clearScreen: false,
-    esbuild: {
-      legalComments: "none",
-      jsx: "automatic",
-      jsxImportSource: "preact",
+    oxc: {
+      jsx: { importSource: "preact" },
     },
     build: {
       outDir: resolve(dirname, "public"),
       emptyOutDir: true,
-      target: ["chrome132", "firefox128"],
+      target: ["chrome140", "firefox128"],
       assetsInlineLimit: 0,
       reportCompressedSize: true,
       chunkSizeWarningLimit: 1024 * 1024,
-      modulePreload: { polyfill: false },
+      modulePreload: false,
       rollupOptions: {
         output: {
+          comments: {
+            annotation: true,
+            jsdoc: true,
+            legal: false,
+          },
           entryFileNames: "[hash].js",
           assetFileNames: "[hash][extname]",
           chunkFileNames: "[hash].js",
