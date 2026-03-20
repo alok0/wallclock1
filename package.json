@@ -23,7 +23,7 @@
     "wouter": "3.9.0"
   },
   "devDependencies": {
-    "@eslint-react/eslint-plugin": "2.13.0",
+    "@eslint-react/eslint-plugin": "3.0.0",
     "@eslint/js": "10.0.1",
     "@mui/styled-engine": "7.3.9",
     "@prefresh/vite": "2.4.12",
