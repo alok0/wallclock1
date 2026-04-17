@@ -4,6 +4,9 @@
   "rebaseWhen": "behind-base-branch",
   "commitMessagePrefix": "[renovatebot] ",
   "postUpdateOptions": ["yarnDedupeHighest"],
+  "gitlabci": {
+    "managerFilePatterns": ["/\\.gitlab-ci\\.ya?ml$/", "/gitlab-ci\\.ya?ml$/"]
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],

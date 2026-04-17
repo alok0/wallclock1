@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "license": "All Rights Reserved",
   "private": true,
+  "engines": {
+    "node": "24.14.x"
+  },
   "scripts": {
     "postinstall": "husky",
     "build": "vite build",
