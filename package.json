@@ -32,7 +32,7 @@
     "@prefresh/vite": "2.4.12",
     "@tsconfig/strictest": "2.0.8",
     "@tsconfig/vite-react": "8.0.6",
-    "@types/node": "24.12.3",
+    "@types/node": "24.12.4",
     "@types/react": "19.2.14",
     "eslint": "10.3.0",
     "eslint-config-prettier": "10.1.8",
