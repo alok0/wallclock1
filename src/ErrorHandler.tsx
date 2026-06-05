@@ -28,9 +28,7 @@ const Fallback: React.FC<{
         )}
       </p>
       {error.error instanceof Error && (
-        <>
-          <p className={classes["small"]}>{String(error.error.stack)}</p>
-        </>
+        <p className={classes["small"]}>{String(error.error.stack)}</p>
       )}
       <p className={classes["small"]}>{error.errorInfo?.componentStack}</p>
     </div>

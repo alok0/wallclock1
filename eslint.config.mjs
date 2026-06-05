@@ -1,40 +1,25 @@
 // @ts-check
 
+import { defineConfig } from "eslint/config";
 import eslintReactUnified from "@eslint-react/eslint-plugin";
 import eslint from "@eslint/js";
 import prettierPlugin from "eslint-config-prettier";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import promisePlugin from "eslint-plugin-promise";
-import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import path from "node:path";
 import tseslint from "typescript-eslint";
 
 const dirname = path.resolve(new URL(".", import.meta.url).pathname);
 
-/**
- * @template T
- * @param {T|undefined|null|0|false|""} v
- * @returns {T}
- */
-const requireTruthy = (v) => {
-  if (!v) {
-    throw new Error("required value not present");
-  }
-  return v;
-};
-
-const commonConfigs = tseslint.config(
+const commonConfigs = defineConfig(
   eslint.configs.recommended,
   ...tseslint.configs.strict,
-  {
-    ...promisePlugin.configs.recommended,
-    plugins: { promise: promisePlugin },
-  },
+  promisePlugin.configs["flat/recommended"],
   prettierPlugin,
 );
 
-export default tseslint.config(
+export default defineConfig(
   {
     extends: [
       ...tseslint.configs.recommendedTypeCheckedOnly,
@@ -47,20 +32,16 @@ export default tseslint.config(
         },
       },
       ...commonConfigs,
-      {
-        ...requireTruthy(reactPlugin.configs.flat["jsx-runtime"]),
-        settings: { react: { version: "detect" } },
-      },
-      eslintReactUnified.configs["recommended-type-checked"],
-      requireTruthy(reactHooksPlugin.configs.flat["recommended-latest"]),
-      jsxA11yPlugin.flatConfigs.recommended,
+
+      eslintReactUnified.configs["strict-type-checked"],
       {
         rules: {
-          "react/display-name": "off",
-          "react/prop-types": "off",
+          // invalid for preact
           "@eslint-react/no-use-context": "off",
         },
       },
+      reactHooksPlugin.configs.flat["recommended-latest"],
+      jsxA11yPlugin.flatConfigs.recommended,
       {
         rules: {
           "@typescript-eslint/no-unsafe-argument": "warn",

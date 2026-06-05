@@ -3,24 +3,22 @@ import { AutoSizer } from "./Autosize";
 import { useTime } from "./TimeData";
 
 const Container: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <>
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
 
-        overflow: "hidden",
-        display: "grid",
-        gridTemplateColumns: "1fr 3fr",
-        gridGap: "1vmin",
-        padding: "1vmax",
-        placeItems: "stretch",
-        pointerEvents: "none",
-      }}
-    >
-      {children}
-    </div>
-  </>
+      overflow: "hidden",
+      display: "grid",
+      gridTemplateColumns: "1fr 3fr",
+      gridGap: "1vmin",
+      padding: "1vmax",
+      placeItems: "stretch",
+      pointerEvents: "none",
+    }}
+  >
+    {children}
+  </div>
 );
 
 export const BigDisplay: React.FC = () => {

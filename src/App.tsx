@@ -59,7 +59,7 @@ export const App: React.FC = () => {
             <ThemeContext>
               <ConfigOverride />
               <VersionChecker />
-              <React.Suspense fallback={<></>}>
+              <React.Suspense fallback={null}>
                 <Main />
                 <ConfigComponents />
               </React.Suspense>

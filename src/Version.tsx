@@ -49,5 +49,5 @@ export const VersionChecker = () => {
     };
   }, []);
 
-  return <></>;
+  return null;
 };

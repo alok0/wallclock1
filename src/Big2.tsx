@@ -51,69 +51,67 @@ export const Big2: React.FC = () => {
   const { display } = useConfig();
 
   return (
-    <>
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          maxWidth: "200vh",
-          maxHeight: "80vw",
-          margin: "auto",
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        maxWidth: "200vh",
+        maxHeight: "80vw",
+        margin: "auto",
 
-          overflow: "hidden",
-          display: "grid",
-          gridTemplateRows: "1fr 5fr 1fr",
-          gap: "1vmin",
-          padding: 16,
-          placeItems: "stretch",
-          cursor: "none",
-        }}
-      >
-        <AutoSizer>
-          <time
-            style={{
-              color: "var(--theme-color-text2)",
-              fontSize: 500,
-              fontWeight: 300,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {time.format("ddd, MMM DD, YYYY")}
-          </time>
-        </AutoSizer>
-        <AutoSizer>
-          <time
-            style={{
-              fontSize: 800,
-              fontWeight: 100,
-              lineHeight: 1,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {time.format("HH:mm")}
-            <span
-              style={{ display: "inline", fontSize: "150px", fontWeight: 300 }}
-            >
-              {time.format("ss")}
-            </span>
-          </time>
-        </AutoSizer>
-        <div
+        overflow: "hidden",
+        display: "grid",
+        gridTemplateRows: "1fr 5fr 1fr",
+        gap: "1vmin",
+        padding: 16,
+        placeItems: "stretch",
+        cursor: "none",
+      }}
+    >
+      <AutoSizer>
+        <time
           style={{
-            display: "grid",
-            gridAutoColumns: "1fr",
-            gridAutoFlow: "column",
-            gap: ".5vmin",
-            overflow: "hidden",
-            placeItems: "stretch",
+            color: "var(--theme-color-text2)",
+            fontSize: 500,
+            fontWeight: 300,
+            whiteSpace: "nowrap",
           }}
         >
-          {display.slice(0, 8).map((timeZone) => (
-            <ZoneDisplayBox key={timeZone} timeZone={timeZone} />
-          ))}
-        </div>
+          {time.format("ddd, MMM DD, YYYY")}
+        </time>
+      </AutoSizer>
+      <AutoSizer>
+        <time
+          style={{
+            fontSize: 800,
+            fontWeight: 100,
+            lineHeight: 1,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {time.format("HH:mm")}
+          <span
+            style={{ display: "inline", fontSize: "150px", fontWeight: 300 }}
+          >
+            {time.format("ss")}
+          </span>
+        </time>
+      </AutoSizer>
+      <div
+        style={{
+          display: "grid",
+          gridAutoColumns: "1fr",
+          gridAutoFlow: "column",
+          gap: ".5vmin",
+          overflow: "hidden",
+          placeItems: "stretch",
+        }}
+      >
+        {display.slice(0, 8).map((timeZone) => (
+          <ZoneDisplayBox key={timeZone} timeZone={timeZone} />
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
