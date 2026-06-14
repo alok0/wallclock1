@@ -15,8 +15,8 @@
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@mui/icons-material": "9.1.0",
-    "@mui/material": "9.1.0",
+    "@mui/icons-material": "9.1.1",
+    "@mui/material": "9.1.1",
     "dayjs": "1.11.21",
     "lean-qr": "2.7.1",
     "preact": "10.29.2",
@@ -26,9 +26,9 @@
     "wouter": "3.10.0"
   },
   "devDependencies": {
-    "@eslint-react/eslint-plugin": "5.8.16",
+    "@eslint-react/eslint-plugin": "5.8.18",
     "@eslint/js": "10.0.1",
-    "@mui/styled-engine": "9.1.0",
+    "@mui/styled-engine": "9.1.1",
     "@prefresh/vite": "2.4.12",
     "@tsconfig/strictest": "2.0.8",
     "@tsconfig/vite-react": "8.0.6",
