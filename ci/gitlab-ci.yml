@@ -1,4 +1,4 @@
-image: node:24.19
+image: node:24.20
 
 test-compile:
   stage: deploy
