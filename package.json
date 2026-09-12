@@ -20,7 +20,7 @@
     "dayjs": "1.11.23",
     "lean-qr": "2.7.4",
     "preact": "10.29.8",
-    "react": "19.2.8",
+    "react": "19.3.0",
     "sunrise-sunset-js": "3.3.1",
     "usehooks-ts": "3.1.1",
     "wouter": "3.11.0"
@@ -33,7 +33,7 @@
     "@tsconfig/strictest": "2.0.8",
     "@tsconfig/vite-react": "8.1.1",
     "@types/node": "24.13.3",
-    "@types/react": "19.2.18",
+    "@types/react": "19.3.0",
     "eslint": "10.10.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsx-a11y": "6.10.2",
@@ -48,8 +48,8 @@
     "vite": "8.2.2"
   },
   "resolutions": {
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.7"
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
   },
   "lint-staged": {
     "*.(js|jsx|ts|tsx|json|html|css|md)": "prettier --write",
