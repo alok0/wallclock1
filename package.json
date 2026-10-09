@@ -19,7 +19,7 @@
     "@mui/material": "9.4.0",
     "dayjs": "1.11.23",
     "lean-qr": "2.7.4",
-    "preact": "10.29.8",
+    "preact": "11.0.0",
     "react": "19.3.0",
     "sunrise-sunset-js": "3.3.1",
     "usehooks-ts": "3.1.1",
