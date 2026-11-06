@@ -1,4 +1,4 @@
-image: node:24.21
+image: node:26.13
 
 test-compile:
   stage: deploy
@@ -8,6 +8,7 @@ test-compile:
       when: never
     - when: on_success
   script:
+    - npm install -g corepack
     - yarn install --immutable
     - yarn tsc --noEmit
     - yarn build
@@ -23,6 +24,7 @@ pages:
       when: on_success
     - when: never
   script:
+    - npm install -g corepack
     - yarn install --immutable
     - yarn build
   artifacts:
